@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	host  = "localhost"
-	port  = "8888"
-	proxy = "http://" + host + ":" + port
-	noproxy = "some.other.url.com"
+	host         = "localhost"
+	port         = "8888"
+	proxy        = "http://" + host + ":" + port
+	noproxy      = "some.other.url.com"
 	othernoproxy = "some.different.url.com"
 )
 
@@ -20,7 +20,7 @@ func TestCreateDefaultPropertiesFile(t *testing.T) {
 	proxyOrg := getOriginalProxyValue()
 	noproxyOrg := getOriginalNoProxyValue()
 	setProxy("", t)
-	setNoProxy("",t)
+	setNoProxy("", t)
 
 	for index := range ProjectTypes {
 		testCreateDefaultPropertiesFile(ProjectType(index), t)
@@ -60,7 +60,7 @@ func TestCreateSimplePropertiesFileWithProxyAndWithoutNoProxy(t *testing.T) {
 	proxyOrg := getOriginalProxyValue()
 	noproxyOrg := getOriginalNoProxyValue()
 	setProxy(proxy, t)
-	setNoProxy("",t)
+	setNoProxy("", t)
 	var propertiesFileConfig = map[string]string{
 		"artifactory.resolve.contextUrl": "http://some.url.com",
 		"artifactory.publish.contextUrl": "http://some.other.url.com",
@@ -77,7 +77,7 @@ func TestCreateSimplePropertiesFileWithoutProxyAndNoProxy(t *testing.T) {
 	proxyOrg := getOriginalProxyValue()
 	noproxyOrg := getOriginalNoProxyValue()
 	setProxy("", t)
-	setNoProxy("",t)
+	setNoProxy("", t)
 	var propertiesFileConfig = map[string]string{
 		"artifactory.resolve.contextUrl": "http://some.url.com",
 		"artifactory.publish.contextUrl": "http://some.other.url.com",
@@ -93,7 +93,7 @@ func TestCreateSimplePropertiesFileWithProxyAndNoProxy(t *testing.T) {
 	proxyOrg := getOriginalProxyValue()
 	noproxyOrg := getOriginalNoProxyValue()
 	setProxy(proxy, t)
-	setNoProxy(noproxy,t)
+	setNoProxy(noproxy, t)
 	var propertiesFileConfig = map[string]string{
 		"artifactory.resolve.contextUrl": "http://some.url.com",
 		"artifactory.publish.contextUrl": "http://some.other.url.com",
@@ -108,7 +108,7 @@ func TestCreateSimplePropertiesFileWithProxyAndDifferentNoProxy(t *testing.T) {
 	proxyOrg := getOriginalProxyValue()
 	noproxyOrg := getOriginalNoProxyValue()
 	setProxy(proxy, t)
-	setNoProxy(othernoproxy,t)
+	setNoProxy(othernoproxy, t)
 	var propertiesFileConfig = map[string]string{
 		"artifactory.resolve.contextUrl": "http://some.url.com",
 		"artifactory.publish.contextUrl": "http://some.other.url.com",
